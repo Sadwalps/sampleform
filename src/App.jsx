@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  //img
+
   const [preview, setPreview] = useState("")
   // details
   const [details, setDetails] = useState({
@@ -23,35 +23,35 @@ function App() {
   }
 
 
-  const handleSubmit = ()=>{
-    const { name,email,description,photo} = details
+  const handleSubmit = () => {
+    const { name, email, description, photo } = details
 
-    if(!name || !email || !description || !photo){
+    if (!name || !email || !description || !photo) {
       alert("Fill the form completely")
-    }else{
+    } else {
       alert("Details successfully submitted")
     }
   }
-  
 
-  const Profile = (e)=>{
-    setDetails({...details,photo:e.target.files[0]})
+
+  const Profile = (e) => {
+    setDetails({ ...details, photo: e.target.files[0] })
   }
 
-  useEffect(()=>{
-    if(details.photo){
+  useEffect(() => {
+    if (details.photo) {
       setPreview(URL.createObjectURL(details.photo))
     }
-  },[details.photo])
+  }, [details.photo])
 
 
   return (
     <>
-      <div className='container-fluid' >
+      <div className='container-fluid bg-dark' >
         <div className="row d-flex justify-content-center align-items-center " style={{ height: "100vh" }}>
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <div className='p-3 border border-2 border-dark rounded'>
+            <div className='p-3 border border-2 border-dark rounded bg-light'>
               <div className='d-flex justify-content-between'>
                 <h4 className='inputlabels'  >Full Name</h4>
                 <input type="text" className='form-control w-50 ' value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} />
@@ -69,7 +69,7 @@ function App() {
 
               <div className='d-flex justify-content-between mt-2'>
 
-                {/* for imgage */}
+                {/* for image */}
                 <div className="row ">
                   <div className="col-5 d-flex justify-content-center align-items-center">
                     <div className=''>
@@ -81,9 +81,9 @@ function App() {
                   </div>
                   {/* img section */}
                   <div className="col-4 ">
-                    <label htmlFor="profilepic" className='w-100' onChange={(e)=>Profile(e)} >
+                    <label htmlFor="profilepic" className='w-100' onChange={(e) => Profile(e)} >
                       <input type="file" id='profilepic' style={{ display: "none" }} />
-                      <img src={preview?preview : "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Image-Transparent-Free-PNG.png" } alt="" className='w-100 pe-3' />
+                      <img src={preview ? preview : "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Image-Transparent-Free-PNG.png"} alt="" className='w-100 pe-3' />
                     </label>
                   </div>
                   <div className='col-1'></div>
